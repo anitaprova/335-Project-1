@@ -85,7 +85,12 @@ void Card::set_text(std::string s)
 	text = s;
 }
 
-/*void Card::set_image(std::string s)
+void Card::play() //'defining' it here so makefile doesnt freak out
+{
+
+}
+
+void Card::set_image(std::string s)
 {
 	
-}*/
+}
