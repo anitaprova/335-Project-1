@@ -5,7 +5,6 @@ class Player
 {
 public:
 	Player();
-
 	int get_score();
 
 private:
