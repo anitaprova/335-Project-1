@@ -14,6 +14,7 @@ public:
 	void addCard(T item);
 	void shuffle();
 	T draw();
+
 private:
-	std::vector<T> deck;
+	std::vector<T> *deck;
 };
