@@ -14,7 +14,7 @@ int main()
 {
 	std::ifstream in_file;
 
-	// Deck<Card> *deck = new Deck<Card>();
+	// Deck<Card> *deck = new Deck<Card>;
 	std::string type = "";
 	std::string text = "";
 	std::vector<int> image;

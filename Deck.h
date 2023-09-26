@@ -2,19 +2,20 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include "Card.h"
 #include "ActionCard.h"
 #include "PointCard.h"
 
-template <typename T>
+template <class Card>
 class Deck
 {
 public:
 	Deck();
 	~Deck();
-	void addCard(T item);
+	void addCard(Card item);
 	void shuffle();
-	T draw();
+	Card draw();
 
 private:
-	std::vector<T> *deck;
+	std::vector<Card> *deck;
 };

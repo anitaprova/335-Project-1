@@ -1,35 +1,35 @@
 #include "Deck.h"
 
-template <typename T>
-Deck<T>::Deck()
+template <class Card>
+Deck<Card>::Deck()
 {
 }
 
-template <typename T>
-Deck<T>::~Deck()
+template <class Card>
+Deck<Card>::~Deck()
 {
 	delete[] deck;
 }
 
-template <typename T>
-void Deck<T>::addCard(T item)
+template <class Card>
+void Deck<Card>::addCard(Card item)
 {
 	deck.push_back(item);
 }
 
 // uses c++ shuffle
-template <typename T>
-void Deck<T>::shuffle()
+template <class Card>
+void Deck<Card>::shuffle()
 {
 	std::shuffle(deck.begin(), deck.end());
 }
 
-template <typename T>
-T Deck<T>::draw()
+template <class Card>
+Card Deck<Card>::draw()
 {
 	if (!deck.empty())
 	{
-		T tempCard = deck.back();
+		Card tempCard = deck.back();
 		deck.pop_back();
 		return tempCard;
 	}
