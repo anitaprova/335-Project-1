@@ -40,7 +40,6 @@ Card::Card(Card &&rhs)
 	bitmap_ = rhs.bitmap_;
 }
 
-// move
 Card &Card::operator=(Card &&rhs)
 {
 	if (this != &rhs)
