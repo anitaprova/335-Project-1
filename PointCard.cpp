@@ -1,18 +1,20 @@
-#include "PointCard.h"
+#include "PointCard.hpp"
 
 PointCard::PointCard()
 {
-	set_type("Point");
+	this->setType(POINT_CARD);
 }
 
-PointCard::PointCard(std::string p, std::string t, std::vector<int> v)
+bool PointCard::isPlayable()
 {
-	set_type(p);
-	set_text(t);
-	set_image(v);
+	if (this->getDrawn() == 1 && isdigit(std::stoi(this->getInstruction())))
+	{
+		return true;
+	}
+	return false;
 }
 
-void PointCard::play()
+void PointCard::Print() const
 {
-	
+	std::cout << "Type: " << this->getType() << "Points: " << this->getInstruction() << "Card: " << this->getImageData();
 }

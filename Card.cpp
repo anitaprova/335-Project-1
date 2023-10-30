@@ -1,95 +1,94 @@
-#include "Card.h"
+#include "Card.hpp"
 
-// constructor
 Card::Card()
 {
-	type = "";
-	text = "";
-	image = new std::vector<int>;
+	std::string instruction_ = "";
+	bool drawn_ = false;
 }
 
-// deconstructor
 Card::~Card()
 {
-	delete[] image;
+	delete bitmap_;
 }
 
-// copy constructor
+// copy
 Card::Card(const Card &rhs)
 {
-	text = rhs.text;
-	type = rhs.text;
-	image = new std::vector<int>;
-	for (auto i = image->begin(); i != image->end(); ++i) // not sure about this
-	{
-		image = rhs.image;
-	}
+	cardType_ = rhs.cardType_;
+	instruction_ = rhs.instruction_;
+	drawn_ = rhs.drawn_;
+	bitmap_ = rhs.bitmap_;
 }
 
-// copy constructor assignment operator
 Card &Card::operator=(const Card &rhs)
 {
 	if (this != &rhs)
 	{
-		delete[] image;
-		text = rhs.text;
-		type = rhs.type;
-		image = new std::vector<int>;
-		for (auto i = image->begin(); i != image->end(); ++i)
-		{
-			image = rhs.image;
-		}
+		cardType_ = rhs.cardType_;
+		instruction_ = rhs.instruction_;
+		drawn_ = rhs.drawn_;
+		bitmap_ = rhs.bitmap_;
 	}
 	return *this;
 }
 
-// move constructor
 Card::Card(Card &&rhs)
 {
-	text = rhs.text;
-	type = rhs.type;
-	image = rhs.image;
-	rhs.image = nullptr;
+	cardType_ = rhs.cardType_;
+	instruction_ = rhs.instruction_;
+	drawn_ = rhs.drawn_;
+	bitmap_ = rhs.bitmap_;
 }
 
-// move constructor assignment operator
+// move
 Card &Card::operator=(Card &&rhs)
 {
 	if (this != &rhs)
 	{
-		text = rhs.text;
-		type = rhs.type;
-		image = rhs.image;
-		rhs.image = nullptr;
+		cardType_ = rhs.cardType_;
+		instruction_ = rhs.instruction_;
+		drawn_ = rhs.drawn_;
+		bitmap_ = rhs.bitmap_;
 	}
 	return *this;
 }
 
-std::string Card::get_type()
+std::string Card::getType() const
 {
-	return type;
+	return cardType_ + "";
 }
 
-std::string Card::get_text()
+void Card::setType(const CardType &type)
 {
-	return text;
+	cardType_ = type;
 }
 
-void Card::set_type(std::string s)
+const std::string &Card::getInstruction() const
 {
-	type = s;
+	return instruction_;
 }
 
-void Card::set_text(std::string s)
+void Card::setInstruction(const std::string &instruction)
 {
-	text = s;
+	instruction_ = instruction;
 }
 
-void Card::play() //'defining' it here so makefile doesnt freak out
+const int *Card::getImageData() const
 {
+	return bitmap_;
 }
 
-void Card::set_image(std::vector<int> i)
+void Card::setImageData(int *data)
 {
-	image = &i;
+	bitmap_ = data;
+}
+
+bool Card::getDrawn() const
+{
+	return drawn_;
+}
+
+void Card::setDrawn(const bool &drawn)
+{
+	drawn_ = drawn;
 }

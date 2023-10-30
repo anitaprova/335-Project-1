@@ -8,17 +8,17 @@ main: main.o $(OBJECTS)
 
 main.o: main.cpp
 
-Card.o: Card.cpp Card.h
+Card.o: Card.cpp Card.hpp
 
-Deck.o: Deck.cpp Deck.h Card.h ActionCard.h PointCard.h
+Deck.o: Deck.cpp Deck.hpp Card.hpp ActionCard.hpp PointCard.hpp
 
-ActionCard.o: ActionCard.cpp ActionCard.h
+ActionCard.o: ActionCard.cpp ActionCard.hpp
 
-PointCard.o: PointCard.cpp PointCard.h
+PointCard.o: PointCard.cpp PointCard.hpp
 
-Hand.o: Hand.cpp Hand.h
+Hand.o: Hand.cpp Hand.hpp
 
-Player.o: Player.cpp Player.h
+Player.o: Player.cpp Player.hpp
 
 clean: 
 	rm main main.o $(OBJECTS)
