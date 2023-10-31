@@ -4,14 +4,14 @@ Card::Card()
 {
 	std::string instruction_ = "";
 	bool drawn_ = false;
+	bitmap_ = new int[80];
 }
 
 Card::~Card()
 {
-	delete bitmap_;
+	delete[] bitmap_;
 }
 
-// copy
 Card::Card(const Card &rhs)
 {
 	cardType_ = rhs.cardType_;
@@ -54,7 +54,13 @@ Card &Card::operator=(Card &&rhs)
 
 std::string Card::getType() const
 {
-	return cardType_ + "";
+	if(cardType_ == ACTION_CARD)
+	{
+		return "ACTION_CARD";
+	}
+	else{
+		return "POINT_CARD";
+	}
 }
 
 void Card::setType(const CardType &type)

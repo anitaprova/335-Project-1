@@ -1,19 +1,10 @@
 #include "Deck.hpp"
 
 template <class CardType>
-Deck<CardType>::Deck()
-{
-	cards_;
-}
+Deck<CardType>::Deck() = default;
 
 template <class CardType>
-Deck<CardType>::~Deck()
-{
-	for (int i = 0; i < cards_.size(); ++i)
-	{
-		//
-	}
-}
+Deck<CardType>::~Deck() = default;
 
 template <class CardType>
 void Deck<CardType>::AddCard(const CardType &card)
@@ -42,7 +33,7 @@ template <class CardType>
 void Deck<CardType>::Shuffle()
 {
 	std::mt19937 random_gen(2028358904);
-	std::shuffle(v.begin(), v.end(), random_gen);
+	std::shuffle(cards_.begin(), cards_.end(), random_gen);
 }
 
 template <class CardType>
