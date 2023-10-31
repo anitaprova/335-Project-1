@@ -1,4 +1,5 @@
 #include <vector>
+#include "Deck.hpp"
 
 template <typename CardType>
 Deck<CardType>::Deck()
