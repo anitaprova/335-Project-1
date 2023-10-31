@@ -1,5 +1,5 @@
 OBJECTS = Card.o Deck.o ActionCard.o PointCard.o Hand.o Player.o
-CXXFLAGS = -g -c -Wall -o
+CXXFLAGS = -g -c -o
 LDFLAGS =
 CXX = g++
 
@@ -10,7 +10,7 @@ main.o: main.cpp
 
 Card.o: Card.cpp Card.hpp
 
-Deck.o: Deck.cpp Deck.hpp Card.hpp ActionCard.hpp PointCard.hpp
+Deck.o: Deck.hpp
 
 ActionCard.o: ActionCard.cpp ActionCard.hpp
 

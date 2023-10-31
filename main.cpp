@@ -11,17 +11,21 @@
 
 int main()
 {
-	ActionCard *a = new ActionCard();
-	a->setDrawn(1);
-	a->setInstruction("PLAY 3 CARD(S)");
-	a->Print();
-	std::cout << a->isPlayable() << "\n\n\n";
+	ActionCard a;
+	a.setDrawn(1);
+	a.setInstruction("PLAY 3 CARD(S)");
+	a.Print();
+	std::cout << a.isPlayable() << "\n\n\n";
+	
+	PointCard p;
+	p.setDrawn(1);
+	p.setInstruction("5");
+	p.Print();
+	p.isPlayable();
 
-	PointCard *p = new PointCard();
-	p->setDrawn(1);
-	p->setInstruction("5");
-	p->Print();
-	p->isPlayable();
+	Deck<PointCard> dp;
+	//dp.AddCard(p);
+	
 
 	return 0;
 }

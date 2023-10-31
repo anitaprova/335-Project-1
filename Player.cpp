@@ -2,16 +2,17 @@
 
 Player::Player()
 {
-	actiondeck_ = new Deck<ActionCard>;
-	pointdeck_ = new Deck<PointCard>;
+	//actiondeck_ = new Deck<ActionCard>();
+	//pointdeck_ = new Deck<PointCard>();
+	opponent_ = new Player();
 	score_ = 0;
 }
 
 Player::~Player()
 {
 	delete opponent_;
-	delete[] actiondeck_;
-	delete[] pointdeck_;
+	//delete[] actiondeck_;
+	//delete[] pointdeck_;
 }
 
 const Hand &Player::getHand() const
@@ -57,7 +58,7 @@ void Player::play(ActionCard &&card)
 
 void Player::drawPointCard()
 {
-	hand_.addCard(pointdeck_->Draw());
+	//hand_.addCard(pointdeck_->Draw());
 }
 
 void Player::playPointCard()
