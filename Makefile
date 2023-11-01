@@ -10,7 +10,7 @@ main.o: main.cpp
 
 Card.o: Card.cpp Card.hpp
 
-Deck.o: Deck.hpp
+Deck.o: Deck.cpp Deck.hpp
 
 ActionCard.o: ActionCard.cpp ActionCard.hpp
 
