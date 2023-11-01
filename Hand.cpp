@@ -3,19 +3,20 @@
 
 Hand::Hand()
 {
-	cards_.clear();
+	std::cout << "constructor";
 }
 
 Hand::~Hand()
 {
 	cards_.clear();
+	std::cout << "deconstructor";
 }
 
 Hand::Hand(const Hand &other)
 {
-	for(int i = 0; i < other.cards_.size(); ++i)
+	for (int i = 0; i < other.cards_.size(); ++i)
 	{
-		cards_[i] = other.cards_[i]; 
+		cards_[i] = other.cards_[i];
 	}
 }
 
@@ -30,14 +31,16 @@ Hand &Hand::operator=(const Hand &other)
 
 Hand::Hand(Hand &&other)
 {
-	std::swap(cards_, other.cards_);
+	// std::swap(cards_, other.cards_);
+	std::move(other.cards_);
 }
 
 Hand &Hand::operator=(Hand &&other)
 {
 	if (this != &other)
 	{
-		std::swap(cards_, other.cards_);
+		// std::swap(cards_, other.cards_);
+		cards_ = std::move(other.cards_);
 	}
 	return *this;
 }
@@ -49,7 +52,7 @@ const std::deque<PointCard> &Hand::getCards() const
 
 void Hand::addCard(PointCard &&card)
 {
-	cards_.push_front(card);
+	cards_.push_back(card);
 }
 
 bool Hand::isEmpty() const

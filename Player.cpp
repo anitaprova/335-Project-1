@@ -2,6 +2,7 @@
 
 Player::Player()
 {
+	//deck doesnt work rn
 	//actiondeck_ = new Deck<ActionCard>();
 	//pointdeck_ = new Deck<PointCard>();
 	opponent_ = new Player();
@@ -40,11 +41,15 @@ void Player::play(ActionCard &&card)
 	std::cout << "PLAYING ACTION CARD: " << card.getInstruction();
 	if (card.isPlayable())
 	{
-		if (card.getInstruction().substr(0,4) == "DRAW")
+		std::regex draw("^DRAW [0-9] CARD\\(S\\)");
+		std::regex play("^PLAY [0-9] CARD\\(S\\)");
+		if (std::regex_match(card.getInstruction(), draw))
 		{
+
 		}
-		else if (card.getInstruction().substr(0, 4) == "PLAY")
+		else if (std::regex_match(card.getInstruction(), play))
 		{
+
 		}
 		else if (card.getInstruction() == "REVERSE HAND")
 		{
@@ -52,6 +57,7 @@ void Player::play(ActionCard &&card)
 		}
 		else if (card.getInstruction() == "SWAP HAND WITH OPPONENT")
 		{
+			//std::swap(hand_, opponent_);
 		}
 	}
 }

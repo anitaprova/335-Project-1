@@ -3,11 +3,9 @@
 #include "Deck.hpp"
 #include "ActionCard.hpp"
 #include "PointCard.hpp"
-
-/*
 #include "Hand.hpp"
-#include "Player.hpp"
-*/
+//#include "Player.hpp"
+
 
 int main()
 {
@@ -23,19 +21,29 @@ int main()
 	a.setDrawn(1);
 	a.setInstruction("PLAY 3 CARD(S)");
 	a.setImageData(b);
-	a.Print();
-	std::cout << a.isPlayable() << "\n\n";
+	//a.Print();
+	//std::cout << a.isPlayable() << "\n\n";
 
 	PointCard p;
 	std::cout << p.getInstruction();
 	p.setDrawn(1);
 	p.setInstruction("5");
 	p.setImageData(bb);
-	p.Print();
-	std::cout << p.isPlayable() << "\n\n";
+	//p.Print();
+	//std::cout << p.isPlayable() << "\n\n";
+
+	PointCard p2;
+	std::cout << p2.getInstruction();
+	p2.setDrawn(1);
+	p2.setInstruction("5");
+	p2.setImageData(bb);
 
 	//Deck<PointCard> dp;
 	//dp.AddCard(p);
+
+	//Hand h;
+	//h.addCard(std::move(p));
+	//h.addCard(std::move(p2));
 
 	return 0;
 }
