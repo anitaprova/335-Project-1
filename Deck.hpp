@@ -69,6 +69,6 @@ private:
 	std::vector<CardType> cards_;
 };
 
-//#include "Deck.cpp"
+#include "Deck.cpp"
 
 #endif

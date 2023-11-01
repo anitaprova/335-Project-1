@@ -4,13 +4,13 @@
 template <typename CardType>
 Deck<CardType>::Deck()
 {
-
+	cards_ = std::vector<CardType>;
 }
 
 template <typename CardType>
 Deck<CardType>::~Deck()
 {
-	
+	cards_.clear();
 }
 
 template <typename CardType>

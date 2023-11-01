@@ -1,34 +1,44 @@
 #pragma once
 #include "Hand.hpp"
 
-Hand::Hand(){
-
+Hand::Hand()
+{
+	cards_.clear();
 }
 
-Hand::~Hand(){
-	
+Hand::~Hand()
+{
+	cards_.clear();
 }
 
 Hand::Hand(const Hand &other)
 {
-	cards_ = other.getCards();
+	for(int i = 0; i < other.cards_.size(); ++i)
+	{
+		cards_[i] = other.cards_[i]; 
+	}
 }
 
 Hand &Hand::operator=(const Hand &other)
 {
-	Hand copy = other;
-	std::swap(*this, copy);
+	for (int i = 0; i < other.cards_.size(); ++i)
+	{
+		cards_[i] = other.cards_[i];
+	}
 	return *this;
 }
 
 Hand::Hand(Hand &&other)
 {
-	cards_ = std::move(other.getCards());
+	std::swap(cards_, other.cards_);
 }
 
 Hand &Hand::operator=(Hand &&other)
 {
-	std::swap(*this, other);
+	if (this != &other)
+	{
+		std::swap(cards_, other.cards_);
+	}
 	return *this;
 }
 
