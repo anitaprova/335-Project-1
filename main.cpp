@@ -34,8 +34,8 @@ int main()
 	p.Print();
 	std::cout << p.isPlayable() << "\n\n";
 
-	// Deck<PointCard> dp;
-	// dp.AddCard(p);
+	//Deck<PointCard> dp;
+	//dp.AddCard(p);
 
 	return 0;
 }
