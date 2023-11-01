@@ -4,7 +4,7 @@
 template <typename CardType>
 Deck<CardType>::Deck()
 {
-	cards_ = std::vector<CardType>;
+	cards_ = std::vector<CardType>();
 }
 
 template <typename CardType>
