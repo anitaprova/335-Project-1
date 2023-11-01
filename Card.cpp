@@ -4,7 +4,7 @@ Card::Card()
 {
 	std::string instruction_ = "";
 	bool drawn_ = false;
-	bitmap_ = new int[80];
+	bitmap_ = nullptr;
 }
 
 Card::~Card()
@@ -17,7 +17,11 @@ Card::Card(const Card &rhs)
 	cardType_ = rhs.cardType_;
 	instruction_ = rhs.instruction_;
 	drawn_ = rhs.drawn_;
-	bitmap_ = rhs.bitmap_;
+	bitmap_ = new int[80];
+	for (int i = 0; i < 80; ++i)
+	{
+		bitmap_[i] = rhs.bitmap_[i];
+	}
 }
 
 Card &Card::operator=(const Card &rhs)
@@ -27,7 +31,12 @@ Card &Card::operator=(const Card &rhs)
 		cardType_ = rhs.cardType_;
 		instruction_ = rhs.instruction_;
 		drawn_ = rhs.drawn_;
-		bitmap_ = rhs.bitmap_;
+		delete[] bitmap_;
+		bitmap_ = new int[80];
+		for (int i = 0; i < 80; ++i)
+		{
+			bitmap_[i] = rhs.bitmap_[i];
+		}
 	}
 	return *this;
 }
@@ -36,8 +45,9 @@ Card::Card(Card &&rhs)
 {
 	cardType_ = rhs.cardType_;
 	instruction_ = rhs.instruction_;
+	rhs.instruction_ = nullptr;
 	drawn_ = rhs.drawn_;
-	bitmap_ = rhs.bitmap_;
+	std::swap(bitmap_, rhs.bitmap_);
 }
 
 Card &Card::operator=(Card &&rhs)
@@ -47,18 +57,19 @@ Card &Card::operator=(Card &&rhs)
 		cardType_ = rhs.cardType_;
 		instruction_ = rhs.instruction_;
 		drawn_ = rhs.drawn_;
-		bitmap_ = rhs.bitmap_;
+		std::swap(bitmap_, rhs.bitmap_);
 	}
 	return *this;
 }
 
 std::string Card::getType() const
 {
-	if(cardType_ == ACTION_CARD)
+	if (cardType_ == ACTION_CARD)
 	{
 		return "ACTION_CARD";
 	}
-	else{
+	else
+	{
 		return "POINT_CARD";
 	}
 }

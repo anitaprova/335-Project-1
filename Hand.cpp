@@ -1,9 +1,13 @@
 #pragma once
 #include "Hand.hpp"
 
-Hand::Hand() = default;
+Hand::Hand(){
 
-Hand::~Hand() = default;
+}
+
+Hand::~Hand(){
+	
+}
 
 Hand::Hand(const Hand &other)
 {
