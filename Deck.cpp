@@ -22,11 +22,11 @@ void Deck<CardType>::AddCard(const CardType &card)
 template <typename CardType>
 CardType &&Deck<CardType>::Draw()
 {
-	if (!cards_.empty())
+	if (!IsEmpty())
 	{
-		CardType c = cards_.back();
+		CardType &&c = std::move(cards_.back());
 		cards_.pop_back();
-		return c;
+		return std::move(c);
 	}
 }
 
@@ -39,7 +39,8 @@ bool Deck<CardType>::IsEmpty() const
 template <typename CardType>
 void Deck<CardType>::Shuffle()
 {
-	std::mt19937 random_gen(2028358904);
+	std::random_device r;
+	std::mt19937 random_gen(r());
 	std::shuffle(cards_.begin(), cards_.end(), random_gen);
 }
 

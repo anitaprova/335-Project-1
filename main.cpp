@@ -39,8 +39,8 @@ int main()
 	p2.setInstruction("5");
 	p2.setImageData(b2);
 
-	//Deck<PointCard> dp;
-	//dp.AddCard(p);
+	Deck<ActionCard> *da;
+	//da->AddCard(a);
 
 	//Hand h;
 	//h.addCard(std::move(p));

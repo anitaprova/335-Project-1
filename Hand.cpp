@@ -1,4 +1,3 @@
-#pragma once
 #include "Hand.hpp"
 
 Hand::Hand()
