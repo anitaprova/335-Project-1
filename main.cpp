@@ -40,6 +40,7 @@ int main()
 	p2.setImageData(b2);
 
 	Deck<ActionCard> *da;
+	std::cout << da->IsEmpty() << "\n";
 	//da->AddCard(a);
 
 	//Hand h;
