@@ -3,7 +3,7 @@
 #include "ActionCard.hpp"
 #include "PointCard.hpp"
 #include "Deck.hpp"
-//#include "Hand.hpp"
+#include "Hand.hpp"
 //#include "Player.hpp"
 
 
@@ -34,18 +34,33 @@ int main()
 	//std::cout << p.isPlayable() << "\n\n";
 
 	PointCard p2;
-	std::cout << p2.getInstruction();
+	//std::cout << p2.getInstruction();
 	p2.setDrawn(1);
-	p2.setInstruction("5");
+	p2.setInstruction("15");
 	p2.setImageData(b2);
 
-	Deck<ActionCard> *da;
-	std::cout << da->IsEmpty() << "\n";
+	//Deck<ActionCard> *da;
+	//std::cout << da->IsEmpty() << "\n";
 	//da->AddCard(a);
 
-	//Hand h;
-	//h.addCard(std::move(p));
-	//h.addCard(std::move(p2));
+	Hand h;
+	h.addCard(std::move(p));
+	//h.getCards().front().Print();
+	h.addCard(std::move(p2));
+	//h.getCards().back().Print();
+	std::cout << h.getCards().size() << "\n";
+	for (auto &x : h.getCards())
+	{
+		x.Print();
+	}
+	std::cout << "REVERSE INCOMING" <<"\n";
+
+	h.Reverse();
+	for(auto &x: h.getCards())
+	{
+		x.Print();
+	}
+	//std::cout << h.PlayCard() << "\n";
 
 	return 0;
 }

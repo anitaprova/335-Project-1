@@ -2,13 +2,13 @@
 
 Hand::Hand()
 {
-	std::cout << "constructor";
+	std::cout << "constructor\n";
 }
 
 Hand::~Hand()
 {
 	cards_.clear();
-	std::cout << "deconstructor";
+	std::cout << "deconstructor\n";
 }
 
 Hand::Hand(const Hand &other)
@@ -63,13 +63,16 @@ void Hand::Reverse()
 {
 	for (int i = 0; i < cards_.size() / 2; i++)
 	{
-		std::swap(cards_[i], cards_[cards_.size() - 1 - i]);
+		PointCard &&p = std::move(cards_[i]);
+		cards_[i] = std::move(cards_[cards_.size() - 1 - i]);
+		cards_[cards_.size() - 1 - i] = std::move(p);
+		// std::swap(cards_[i], cards_[cards_.size() - 1 - i]);
 	}
 }
 
 int Hand::PlayCard()
 {
-	if (!this->isEmpty() && !cards_[0].isPlayable())
+	if (!this->isEmpty() && cards_[0].isPlayable())
 	{
 		int points = stoi(cards_[0].getInstruction());
 		cards_.pop_front();

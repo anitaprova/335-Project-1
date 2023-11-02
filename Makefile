@@ -4,7 +4,7 @@ LDFLAGS =
 CXX = g++
 
 main: main.o $(OBJECTS)
-	g++ -g -c -o main main.o $(OBJECTS)
+	g++ -g -o main main.o $(OBJECTS)
 
 main.o: main.cpp
 
