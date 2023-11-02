@@ -39,9 +39,7 @@ bool Deck<CardType>::IsEmpty() const
 template <typename CardType>
 void Deck<CardType>::Shuffle()
 {
-	//std::random_device rd;
   std::mt19937 g(2028358904);
- 
 	std::shuffle(cards_.begin(), cards_.end(), g);
 }
 

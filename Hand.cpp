@@ -2,7 +2,7 @@
 
 Hand::Hand()
 {
-	std::cout << "constructor\n";
+	//deck of pointcards?
 }
 
 Hand::~Hand()
@@ -66,7 +66,6 @@ void Hand::Reverse()
 		PointCard &&p = std::move(cards_[i]);
 		cards_[i] = std::move(cards_[cards_.size() - 1 - i]);
 		cards_[cards_.size() - 1 - i] = std::move(p);
-		//std::swap(cards_[i], cards_[cards_.size() - 1 - i]);
 	}
 }
 

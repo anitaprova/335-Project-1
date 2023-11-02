@@ -44,7 +44,13 @@ void Player::play(ActionCard &&card)
 		std::regex play("^PLAY [0-9] CARD\\(S\\)");
 		if (std::regex_match(card.getInstruction(), draw))
 		{
-
+			/*
+			for(int i = 0; i < ; ++i)
+			{
+				
+			}
+			
+			*/
 		}
 		else if (std::regex_match(card.getInstruction(), play))
 		{
@@ -68,6 +74,7 @@ void Player::drawPointCard()
 
 void Player::playPointCard()
 {
+	score_ += hand_.PlayCard();
 	
 }
 
