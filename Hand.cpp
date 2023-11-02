@@ -30,16 +30,16 @@ Hand &Hand::operator=(const Hand &other)
 
 Hand::Hand(Hand &&other)
 {
-	// std::swap(cards_, other.cards_);
-	std::move(other.cards_);
+	std::swap(cards_, other.cards_);
+	//std::move(other.cards_);
 }
 
 Hand &Hand::operator=(Hand &&other)
 {
 	if (this != &other)
 	{
-		// std::swap(cards_, other.cards_);
-		cards_ = std::move(other.cards_);
+		std::swap(cards_, other.cards_);
+		//cards_ = std::move(other.cards_);
 	}
 	return *this;
 }
@@ -66,7 +66,7 @@ void Hand::Reverse()
 		PointCard &&p = std::move(cards_[i]);
 		cards_[i] = std::move(cards_[cards_.size() - 1 - i]);
 		cards_[cards_.size() - 1 - i] = std::move(p);
-		// std::swap(cards_[i], cards_[cards_.size() - 1 - i]);
+		//std::swap(cards_[i], cards_[cards_.size() - 1 - i]);
 	}
 }
 

@@ -1,4 +1,4 @@
-OBJECTS = Card.o Deck.o ActionCard.o PointCard.o Hand.o Player.o
+OBJECTS = Card.o ActionCard.o PointCard.o Hand.o Player.o
 CXXFLAGS = -g -c -o
 LDFLAGS =
 CXX = g++
@@ -9,8 +9,6 @@ main: main.o $(OBJECTS)
 main.o: main.cpp
 
 Card.o: Card.cpp Card.hpp
-
-Deck.o: Deck.cpp Deck.hpp
 
 ActionCard.o: ActionCard.cpp ActionCard.hpp
 

@@ -2,7 +2,7 @@
 
 ActionCard::ActionCard()
 {
-	std::string instruction_ = "";
+	setInstruction("");
 	bool drawn_ = false;
 	this->setImageData(nullptr);
 	this->setType(ACTION_CARD);
