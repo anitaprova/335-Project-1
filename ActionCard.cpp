@@ -3,7 +3,7 @@
 ActionCard::ActionCard()
 {
 	setInstruction("");
-	bool drawn_ = false;
+	setDrawn(false);
 	this->setImageData(nullptr);
 	this->setType(ACTION_CARD);
 }

@@ -11,7 +11,11 @@ Deck<CardType>::Deck()
 template <typename CardType>
 Deck<CardType>::~Deck()
 {
-	cards_.clear();
+	//cards_.clear();
+	for(int i = 0; i < cards_.size(); i++)
+	{
+		cards_.pop_back();
+	}
 }
 
 template <typename CardType>
@@ -23,7 +27,7 @@ void Deck<CardType>::AddCard(const CardType &card)
 template <typename CardType>
 CardType &&Deck<CardType>::Draw()
 {
-	if (!this->IsEmpty())
+	if (!IsEmpty())
 	{
 		CardType &&c = std::move(cards_.back());
 		cards_.pop_back();
