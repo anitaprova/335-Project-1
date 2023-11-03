@@ -3,7 +3,7 @@
 Card::Card()
 {
 	std::string instruction_ = "";
-	bool drawn_ = false;
+	setDrawn(false);
 	bitmap_ = nullptr;
 }
 
@@ -45,7 +45,7 @@ Card::Card(Card &&rhs)
 {
 	cardType_ = rhs.cardType_;
 	instruction_ = rhs.instruction_;
-	rhs.instruction_ = nullptr;
+	rhs.instruction_ = "";
 	drawn_ = rhs.drawn_;
 	std::swap(bitmap_, rhs.bitmap_);
 }
@@ -55,7 +55,9 @@ Card &Card::operator=(Card &&rhs)
 	if (this != &rhs)
 	{
 		cardType_ = rhs.cardType_;
-		instruction_ = rhs.instruction_;
+		//instruction_ = rhs.instruction_;
+		instruction_ = std::move(rhs.instruction_);
+		rhs.instruction_ = "";
 		drawn_ = rhs.drawn_;
 		std::swap(bitmap_, rhs.bitmap_);
 	}

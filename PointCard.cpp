@@ -3,7 +3,7 @@
 PointCard::PointCard()
 {
 	std::string instruction_ = "0";
-	bool drawn_ = false;
+	setDrawn(false);
 	this->setImageData(nullptr);
 	this->setType(POINT_CARD);
 }
