@@ -1,4 +1,5 @@
 #include <vector>
+#include <algorithm>
 #include "Deck.hpp"
 
 template <typename CardType>
@@ -39,7 +40,7 @@ bool Deck<CardType>::IsEmpty() const
 template <typename CardType>
 void Deck<CardType>::Shuffle()
 {
-  std::mt19937 g(2028358904);
+	std::mt19937 g(2028358904);
 	std::shuffle(cards_.begin(), cards_.end(), g);
 }
 

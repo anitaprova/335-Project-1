@@ -9,40 +9,38 @@
 
 int main()
 {
-	int *b = new int[80];
-	int *b1 = new int[80];
-	int *b2 = new int[80];
-	int *b3 = new int[80];
+	int *p1_array = new int[80];
+	int *p2_array = new int[80];
+	int *p3_array = new int[80];
 
-	int *a_array = new int[80];
 	int *a1_array = new int[80];
 	int *a2_array = new int[80];
+	int *a3_array = new int[80];
 	for (int i = 0; i < 80; ++i)
 	{
-		b[i] = i;
-		b1[i] = i;
-		b2[i] = i;
-		b3[i] = i;
+		p1_array[i] = i;
+		p2_array[i] = i;
+		p3_array[i] = i;
 
-		a_array[i] = i;
 		a1_array[i] = i;
 		a2_array[i] = i;
+		a3_array[i] = i;
 	}
 
 	ActionCard a1;
-	a1.setDrawn(1);
-	a1.setInstruction("PLAY 5 CARD(S)");
-	a1.setImageData(a_array);
+	a1.setDrawn(true);
+	a1.setInstruction("PLAY 1 CARD(S)");
+	a1.setImageData(a1_array);
 
 	ActionCard a2;
-	a2.setDrawn(1);
-	a2.setInstruction("PLAY 3 CARD(S)");
-	a2.setImageData(a1_array);
+	a2.setDrawn(true);
+	a2.setInstruction("PLAY 2 CARD(S)");
+	a2.setImageData(a2_array);
 
 	ActionCard a3;
-	a3.setDrawn(1);
+	a3.setDrawn(true);
 	a3.setInstruction("PLAY 3 CARD(S)");
-	a3.setImageData(a2_array);
+	a3.setImageData(a3_array);
 
 	Deck<ActionCard> da;
 	std::cout << da.IsEmpty() << "\n";
@@ -50,50 +48,66 @@ int main()
 	da.AddCard(a1);
 	da.AddCard(a2);
 	da.AddCard(a3);
-	std::cout << da.getSize() << "\n";
 	ActionCard &&deck_card = da.Draw();
 	std::cout << deck_card.getInstruction() << "\n";
-	
+
 	//da.Shuffle();
-	/*for (auto &x : da.getDeck())
+	/*
+	std::vector<int> v = {1,2,3,4};
+	std::mt19937 g(2028358904);
+	std::shuffle(v.begin(), v.end(), g);
+	for(int i = 0; i < v.size(); i++)
+	{
+		std::cout << v[i] << " ";
+	}
+
+	for (auto &x : da.getDeck())
 	{
 		x.Print();
-	}*/
-	
-	PointCard p;
-	p.setDrawn(1);
-	p.setInstruction("5");
-	p.setImageData(b1);
+	}
+	*/
+
+	PointCard p1;
+	p1.setDrawn(true);
+	p1.setInstruction("5");
+	p1.setImageData(p1_array);
 
 	PointCard p2;
-	p2.setDrawn(1);
+	p2.setDrawn(true);
 	p2.setInstruction("15");
-	p2.setImageData(b2);
+	p2.setImageData(p2_array);
 
 	PointCard p3;
-	p3.setDrawn(1);
+	p3.setDrawn(true);
 	p3.setInstruction("20");
-	p3.setImageData(b3);
+	p3.setImageData(p3_array);
 
-	/*Hand h;
-	h.addCard(std::move(p));
+	Deck<PointCard> dp;
+	dp.AddCard(p3);
+
+	Hand h;
+	h.addCard(std::move(p1));
 	h.addCard(std::move(p2));
-	h.addCard(std::move(p3));
+	h.addCard(dp.Draw());
 
 	std::cout << h.getCards().size() << "\n";
 	for (auto &x : h.getCards())
 	{
 		x.Print();
 	}
-	std::cout << "REVERSE INCOMING" <<"\n\n\n";
 
+	std::cout << "REVERSE INCOMING" <<"\n\n\n";
 	h.Reverse();
 	for(auto &x: h.getCards())
 	{
 		x.Print();
 	}
 	//std::cout << h.PlayCard() << "\n";
-	*/
-	
+
+
+
+	// shuffle in deck doesnt work
+	// reverse in hand does work 
+	// issue with moving?
 	return 0;
 }
