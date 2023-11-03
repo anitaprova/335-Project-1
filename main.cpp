@@ -65,71 +65,45 @@ int main()
 	std::cout << da.getSize() << "\n";
 	//ActionCard &&deck_card = da.Draw();
 	//std::cout << deck_card.getInstruction() << "\n";
-	// for(auto x : da.getDeck())
-	// {
-	// 	std::cout<<x.getInstruction()<<std::endl;
-	// }
-
 	
 	//  for(auto x : v)
 	// {
 	// 	std::cout<<x.getInstruction()<<std::endl;
 	// }
-	da.Shuffle();
-	
-	// std::vector<int> v = {1,2,3,4};
-	// std::mt19937 g(2028358904);
-	// std::shuffle(v.begin(), v.end(), g);
-	// for(int i = 0; i < v.size(); i++)
-	// {
-	// 	std::cout << v[i] << " ";
-	// }
-	//
-	// for (auto &x : da.getDeck())
-	// {
-	// 	x.Print();
-	// }
-	
+	// da.Shuffle();
 
-	// PointCard p1;
-	// p1.setDrawn(true);
-	// p1.setInstruction("5");
-	// p1.setImageData(p1_array);
+	PointCard p1;
+	p1.setDrawn(true);
+	p1.setInstruction("5");
+	p1.setImageData(p1_array);
 
-	// PointCard p2;
-	// p2.setDrawn(true);
-	// p2.setInstruction("15");
-	// p2.setImageData(p2_array);
+	PointCard p2;
+	p2.setDrawn(true);
+	p2.setInstruction("15");
+	p2.setImageData(p2_array);
 
-	// PointCard p3;
-	// p3.setDrawn(true);
-	// p3.setInstruction("20");
-	// p3.setImageData(p3_array);
+	PointCard p3;
+	p3.setDrawn(true);
+	p3.setInstruction("20");
+	p3.setImageData(p3_array);
 
-	// Deck<PointCard> dp;
-	// dp.AddCard(p1);
-	// dp.AddCard(p2);
-	// dp.AddCard(p3);
+	Hand h;
+	h.addCard(std::move(p1));
+	h.addCard(std::move(p2));
+	h.addCard(std::move(p3));
 
-	// dp.Shuffle();
+	std::cout << h.getCards().size() << "\n";
+	for (auto &x : h.getCards())
+	{
+		x.Print();
+	}
 
-	// Hand h;
-	// h.addCard(std::move(p1));
-	// h.addCard(std::move(p2));
-	// h.addCard(dp.Draw());
-
-	// std::cout << h.getCards().size() << "\n";
-	// for (auto &x : h.getCards())
-	// {
-	// 	x.Print();
-	// }
-
-	// std::cout << "REVERSE INCOMING" <<"\n\n\n";
-	// h.Reverse();
-	// for(auto &x: h.getCards())
-	// {
-	// 	x.Print();
-	// }
+	std::cout << "REVERSE INCOMING" <<"\n\n\n";
+	h.Reverse();
+	for(auto &x: h.getCards())
+	{
+		x.Print();
+	}
 	//std::cout << h.PlayCard() << "\n";
 	
 
