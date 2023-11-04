@@ -17,13 +17,13 @@ Deck<CardType>::~Deck()
 template <typename CardType>
 void Deck<CardType>::AddCard(const CardType &card)
 {
-	cards_.push_back(card);
+	cards_.push_back(std::move(card));
 }
 
 template <typename CardType>
 CardType &&Deck<CardType>::Draw()
 {
-	if (!IsEmpty())
+	if (!cards_.empty())
 	{
 		CardType &&c = std::move(cards_.back());
 		cards_.pop_back();

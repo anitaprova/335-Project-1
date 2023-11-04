@@ -26,7 +26,6 @@ Card::Card(const Card &rhs)
 
 	if (rhs.bitmap_ != nullptr)
 	{
-		// bitmap_ = new int(*rhs.bitmap_); //this also works
 		bitmap_ = new int[80];
 		for (int i = 0; i < 80; ++i)
 		{
@@ -66,14 +65,8 @@ Card &Card::operator=(const Card &rhs)
 
 Card::Card(Card &&rhs)
 {
-	// cardType_ = rhs.cardType_;
-	// instruction_ = rhs.instruction_;
-	// rhs.instruction_ = "";
-	// drawn_ = rhs.drawn_;
-	// std::swap(bitmap_, rhs.bitmap_);
-
 	cardType_ = rhs.cardType_;
-	instruction_ = std::move(rhs.instruction_);
+	instruction_ = rhs.instruction_;
 	rhs.instruction_ = "";
 	drawn_ = rhs.drawn_;
 	rhs.drawn_ = false;
