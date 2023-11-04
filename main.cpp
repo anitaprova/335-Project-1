@@ -58,22 +58,18 @@ int main()
 	a4.setImageData(a4_array);
 
 	Deck<ActionCard> da;
-	// std::cout << da.IsEmpty() << "\n";
-	// std::cout << da.getSize() << "\n";
 	da.AddCard(a1);
 	da.AddCard(a2);
 	da.AddCard(a3);
 	da.AddCard(a4);
-	// std::cout << da.IsEmpty() << "\n";
-	// std::cout << da.getSize() << "\n";
-	ActionCard &&deck_card = da.Draw();
+	ActionCard deck_card = da.Draw();
 	std::cout << deck_card.getInstruction() << "\n";
-	// std::cout << deck_card.getDrawn() << "\n";
 
 	// for (auto x : da.getDeck())
 	// {
 	// 	x.Print();
 	// }
+	// std::cout << "SHUFFLE INCOMING \n\n";
 	// da.Shuffle();
 	// for (auto x : da.getDeck())
 	// {
@@ -108,18 +104,14 @@ int main()
 	p5.setImageData(p5_array);
 
 	Hand h;
-	// h.addCard(std::move(p)); // empty constructor
-	// h.addCard(std::move(p1));
-	// h.addCard(std::move(p2));
-	// h.addCard(std::move(p3));
+	//h.addCard(std::move(p)); // empty constructor
+	h.addCard(std::move(p1));
+	h.addCard(std::move(p2));
+	h.addCard(std::move(p3));
 
 	Deck<PointCard> dp;
 	dp.AddCard(p4);
 	dp.AddCard(p5);
-	for (auto &x : dp.getDeck())
-	{
-		x.Print();
-	}
 
 	h.addCard(dp.Draw());
 	h.addCard(dp.Draw());
@@ -129,14 +121,17 @@ int main()
 		x.Print();
 	}
 
-	// std::cout << "\nREVERSE INCOMING" << "\n\n";
+	std::cout << "\nREVERSE INCOMING" << "\n\n";
 
-	// h.Reverse();
+	//h.Reverse();
 	// for (auto &x : h.getCards())
 	// {
 	// 	x.Print();
 	// }
-	// std::cout << h.PlayCard() << "\n";
+	std::cout << h.PlayCard() << "\n";
+	std::cout << h.PlayCard() << "\n";
+	std::cout << h.PlayCard() << "\n";
+	std::cout << h.PlayCard() << "\n";
 
 	return 0;
 }

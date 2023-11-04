@@ -49,6 +49,7 @@ const std::deque<PointCard> &Hand::getCards() const
 
 void Hand::addCard(PointCard &&card)
 {
+	card.setDrawn(true);
 	cards_.push_back(std::move(card));
 }
 
