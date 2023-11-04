@@ -23,24 +23,24 @@ Card::Card(const Card &rhs)
 	cardType_ = rhs.cardType_;
 	instruction_ = rhs.instruction_;
 	drawn_ = rhs.drawn_;
-	bitmap_ = new int[80];
-	for (int i = 0; i < 80; ++i)
-	{
-		bitmap_[i] = rhs.bitmap_[i];
-	}
+	// bitmap_ = new int[80];
+	// for (int i = 0; i < 80; ++i)
+	// {
+	// 	bitmap_[i] = rhs.bitmap_[i];
+	// }
 
-	// if (rhs.bitmap_ != nullptr)
-	// {
-	// 	bitmap_ = new int[80];
-	// 	for (int i = 0; i < 80; ++i)
-	// 	{
-	// 		bitmap_[i] = rhs.bitmap_[i];
-	// 	}
-	// }
-	// else
-	// {
-	// 	bitmap_ = nullptr;
-	// }
+	if (rhs.bitmap_ != nullptr)
+	{
+		bitmap_ = new int[80];
+		for (int i = 0; i < 80; ++i)
+		{
+			bitmap_[i] = rhs.bitmap_[i];
+		}
+	}
+	else
+	{
+		bitmap_ = nullptr;
+	}
 }
 
 Card &Card::operator=(const Card &rhs)
@@ -51,24 +51,24 @@ Card &Card::operator=(const Card &rhs)
 		instruction_ = rhs.instruction_;
 		drawn_ = rhs.drawn_;
 		delete[] bitmap_;
-		bitmap_ = new int[80];
-		for (int i = 0; i < 80; ++i)
-		{
-			bitmap_[i] = rhs.bitmap_[i];
-		}
+		// bitmap_ = new int[80];
+		// for (int i = 0; i < 80; ++i)
+		// {
+		// 	bitmap_[i] = rhs.bitmap_[i];
+		// }
 
-		// if (rhs.bitmap_ != nullptr)
-		// {
-		// 	bitmap_ = new int[80];
-		// 	for (int i = 0; i < 80; ++i)
-		// 	{
-		// 		bitmap_[i] = rhs.bitmap_[i];
-		// 	}
-		// }
-		// else
-		// {
-		// 	bitmap_ = nullptr;
-		// }
+		if (rhs.bitmap_ != nullptr)
+		{
+			bitmap_ = new int[80];
+			for (int i = 0; i < 80; ++i)
+			{
+				bitmap_[i] = rhs.bitmap_[i];
+			}
+		}
+		else
+		{
+			bitmap_ = nullptr;
+		}
 	}
 	return *this;
 }

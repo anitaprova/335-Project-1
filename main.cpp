@@ -4,12 +4,7 @@
 #include "PointCard.hpp"
 #include "Deck.hpp"
 #include "Hand.hpp"
-// #include "Player.hpp"
-
-// #include <algorithm>
-// #include <iterator>
-// #include<random>
-// #include <vector>
+#include "Player.hpp"
 
 int main()
 {
@@ -65,16 +60,17 @@ int main()
 	ActionCard deck_card = da.Draw();
 	std::cout << deck_card.getInstruction() << "\n";
 
-	// for (auto x : da.getDeck())
-	// {
-	// 	x.Print();
-	// }
-	// std::cout << "SHUFFLE INCOMING \n\n";
-	// da.Shuffle();
-	// for (auto x : da.getDeck())
-	// {
-	// 	x.Print();
-	// }
+	for (auto x : da.getDeck())
+	{
+		x.Print();
+	}
+	std::cout << "\n\nSHUFFLE INCOMING \n\n";
+	da.Shuffle();
+	for (auto x : da.getDeck())
+	{
+		x.Print();
+	}
+	std::cout << "\\\\\\\\\\\\\\\\\\\\\\\\ \n\n\n";
 
 	PointCard p; // empty
 
@@ -104,7 +100,7 @@ int main()
 	p5.setImageData(p5_array);
 
 	Hand h;
-	//h.addCard(std::move(p)); // empty constructor
+	// h.addCard(std::move(p)); // empty constructor
 	h.addCard(std::move(p1));
 	h.addCard(std::move(p2));
 	h.addCard(std::move(p3));
@@ -121,17 +117,18 @@ int main()
 		x.Print();
 	}
 
-	std::cout << "\nREVERSE INCOMING" << "\n\n";
+	std::cout << "\nREVERSE INCOMING"
+						<< "\n\n";
 
-	//h.Reverse();
-	// for (auto &x : h.getCards())
-	// {
-	// 	x.Print();
-	// }
-	std::cout << h.PlayCard() << "\n";
-	std::cout << h.PlayCard() << "\n";
-	std::cout << h.PlayCard() << "\n";
-	std::cout << h.PlayCard() << "\n";
+	h.Reverse();
+	for (auto &x : h.getCards())
+	{
+		x.Print();
+	}
+	//  std::cout << h.PlayCard() << "\n";
+	//  std::cout << h.PlayCard() << "\n";
+	//  std::cout << h.PlayCard() << "\n";
+	//  std::cout << h.PlayCard() << "\n";
 
 	return 0;
 }
