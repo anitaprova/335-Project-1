@@ -4,13 +4,12 @@
 #include "PointCard.hpp"
 #include "Deck.hpp"
 #include "Hand.hpp"
-//#include "Player.hpp"
+// #include "Player.hpp"
 
 // #include <algorithm>
 // #include <iterator>
 // #include<random>
 // #include <vector>
-
 
 int main()
 {
@@ -55,22 +54,26 @@ int main()
 	a4.setImageData(a4_array);
 
 	Deck<ActionCard> da;
-	std::cout << da.IsEmpty() << "\n";
-	std::cout << da.getSize() << "\n";
+	// std::cout << da.IsEmpty() << "\n";
+	// std::cout << da.getSize() << "\n";
 	da.AddCard(a1);
 	da.AddCard(a2);
 	da.AddCard(a3);
 	da.AddCard(a4);
-	std::cout << da.IsEmpty() << "\n";
-	std::cout << da.getSize() << "\n";
-	//ActionCard &&deck_card = da.Draw();
-	//std::cout << deck_card.getInstruction() << "\n";
-	
-	//  for(auto x : v)
+	// std::cout << da.IsEmpty() << "\n";
+	// std::cout << da.getSize() << "\n";
+	// ActionCard &&deck_card = da.Draw();
+	// std::cout << deck_card.getInstruction() << "\n";
+
+	// for (auto x : da.getDeck())
 	// {
-	// 	std::cout<<x.getInstruction()<<std::endl;
+	// 	x.Print();
 	// }
 	// da.Shuffle();
+	// for (auto x : da.getDeck())
+	// {
+	// 	x.Print();
+	// }
 
 	PointCard p1;
 	p1.setDrawn(true);
@@ -92,24 +95,19 @@ int main()
 	h.addCard(std::move(p2));
 	h.addCard(std::move(p3));
 
-	std::cout << h.getCards().size() << "\n";
 	for (auto &x : h.getCards())
 	{
 		x.Print();
 	}
 
-	std::cout << "REVERSE INCOMING" <<"\n\n\n";
+	std::cout << "\nREVERSE INCOMING" << "\n\n";
+
 	h.Reverse();
-	for(auto &x: h.getCards())
+	for (auto &x : h.getCards())
 	{
 		x.Print();
 	}
-	//std::cout << h.PlayCard() << "\n";
-	
+	std::cout << h.PlayCard() << "\n";
 
-
-	// shuffle in deck doesnt work
-	// reverse in hand doesnt work 
-	// issue with moving?
 	return 0;
 }
