@@ -29,7 +29,7 @@ Hand &Hand::operator=(const Hand &other)
 Hand::Hand(Hand &&other)
 {
 	std::swap(cards_, other.cards_);
-	//std::move(other.cards_);
+	// std::move(other.cards_);
 }
 
 Hand &Hand::operator=(Hand &&other)
@@ -37,7 +37,7 @@ Hand &Hand::operator=(Hand &&other)
 	if (this != &other)
 	{
 		std::swap(cards_, other.cards_);
-		//cards_ = std::move(other.cards_);
+		// cards_ = std::move(other.cards_);
 	}
 	return *this;
 }
@@ -68,7 +68,8 @@ void Hand::Reverse()
 
 int Hand::PlayCard()
 {
-	if (!this->isEmpty() && cards_[0].isPlayable())
+	//&& cards_[0].isPlayable()
+	if (!this->isEmpty())
 	{
 		int points = stoi(cards_[0].getInstruction());
 		cards_.pop_front();
@@ -76,6 +77,6 @@ int Hand::PlayCard()
 	}
 	else
 	{
-		throw std::out_of_range("empty");
+		throw std::out_of_range("Deck is empty");
 	}
 }

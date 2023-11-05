@@ -29,10 +29,11 @@ void PointCard::Print() const
 	}
 	else
 	{
-		for (int i = 0; i < 80; i++)
-		{
-			std::cout << this->getImageData()[i] << " ";
-		}
-		std::cout << "\n";
+		// for (int i = 0; i < 80; i++)
+		// {
+		// 	std::cout << this->getImageData()[i] << " ";
+		// }
+		// std::cout << "\n";
+		std::cout << this->getImageData() << "\n";
 	}
 }

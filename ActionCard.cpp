@@ -10,7 +10,7 @@ ActionCard::ActionCard()
 
 bool ActionCard::isPlayable()
 {
-	if (this->getDrawn() == 1)
+	if (this->getDrawn())
 	{
 		std::regex draw("^DRAW [0-9] CARD\\(S\\)");
 		std::regex play("^PLAY [0-9] CARD\\(S\\)");
@@ -38,10 +38,11 @@ void ActionCard::Print() const
 	}
 	else
 	{
-		for (int i = 0; i < 80; i++)
-		{
-			std::cout << this->getImageData()[i] << " ";
-		}
-		std::cout << "\n";
+		// for (int i = 0; i < 80; i++)
+		// {
+		// 	std::cout << this->getImageData()[i] << " ";
+		// }
+
+		std::cout << this->getImageData() << "\n";
 	}
 }
