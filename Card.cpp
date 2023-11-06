@@ -4,8 +4,8 @@ Card::Card()
 {
 	instruction_ = "";
 	drawn_ = false;
-	// bitmap_ = new int[80];
-	bitmap_ = nullptr;
+	bitmap_ = new int[80];
+	// bitmap_ = nullptr;
 }
 
 Card::~Card()
@@ -91,8 +91,12 @@ Card &Card::operator=(Card &&rhs)
 	{
 		cardType_ = std::move(rhs.cardType_);
 		instruction_ = std::move(rhs.instruction_);
-		bitmap_ = std::move(rhs.bitmap_);
 		drawn_ = std::move(rhs.drawn_);
+		bitmap_ = std::move(rhs.bitmap_);
+		// for(int i = 0; i < 80; i++)
+		// {
+		// 	std::swap(bitmap_[i], rhs.bitmap_[i]);
+		// }
 
 		// std::swap(cardType_, rhs.cardType_);
 		// std::swap(instruction_, rhs.instruction_);

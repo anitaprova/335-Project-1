@@ -68,8 +68,7 @@ void Hand::Reverse()
 
 int Hand::PlayCard()
 {
-	//&& cards_[0].isPlayable()
-	if (!this->isEmpty())
+	if (!this->isEmpty() && cards_[0].isPlayable())
 	{
 		int points = stoi(cards_[0].getInstruction());
 		cards_.pop_front();

@@ -56,7 +56,6 @@ void Player::play(ActionCard &&card)
 
 	if (std::regex_match(card.getInstruction(), draw))
 	{
-		std::cout << "DRAW" << "\n";
 		for (int i = 0; i < std::stoi(match[0]); ++i)
 		{
 			drawPointCard();
@@ -72,17 +71,14 @@ void Player::play(ActionCard &&card)
 	}
 	else if (card.getInstruction() == "REVERSE HAND")
 	{
-		std::cout << "REVERSE" << "\n";
-
 		hand_.Reverse();
 	}
 	else if (card.getInstruction() == "SWAP HAND WITH OPPONENT")
 	{
-
-		std::cout << "SWAP" << "\n";
-		Hand h = hand_;
-		hand_ = opponent_->hand_;
-		opponent_->setHand(h);
+		// Hand h = hand_;
+		// hand_ = opponent_->hand_;
+		// opponent_->setHand(h);
+		std::swap(hand_, this->getOpponent()->hand_);
 	}
 }
 

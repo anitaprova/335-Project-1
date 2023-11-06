@@ -18,6 +18,10 @@ int main()
 	int *a2_array = new int[80];
 	int *a3_array = new int[80];
 	int *a4_array = new int[80];
+	int *a5_array = new int[80];
+	int *a6_array = new int[80];
+	int *a7_array = new int[80];
+	int *a8_array = new int[80];
 	for (int i = 0; i < 80; ++i)
 	{
 		p1_array[i] = i;
@@ -30,30 +34,43 @@ int main()
 		a2_array[i] = i;
 		a3_array[i] = i;
 		a4_array[i] = i;
+		a5_array[i] = i;
+		a6_array[i] = i;
+		a7_array[i] = i;
+		a8_array[i] = i;
 	}
 
 	ActionCard a1;
-	// a1.setDrawn(true);
 	a1.setInstruction("DRAW 1 CARD(S)");
 	a1.setImageData(a1_array);
 
-	ActionCard a1_5;
-	a1.setInstruction("DRAW 1 CARD(S)");
-
 	ActionCard a2;
-	// a2.setDrawn(true);
 	a2.setInstruction("PLAY 1 CARD(S)");
 	a2.setImageData(a2_array);
 
 	ActionCard a3;
-	// a3.setDrawn(true);
 	a3.setInstruction("REVERSE HAND");
 	a3.setImageData(a3_array);
 
 	ActionCard a4;
-	// a4.setDrawn(true);
 	a4.setInstruction("SWAP HAND WITH OPPONENT");
 	a4.setImageData(a4_array);
+
+	ActionCard a5;
+	a5.setInstruction("DRAW 1 CARD(S)");
+	a5.setImageData(a5_array);
+
+	ActionCard a6;
+	a6.setInstruction("PLAY 1 CARD(S)");
+	a6.setImageData(a6_array);
+
+	ActionCard a7;
+	a7.setInstruction("REVERSE HAND");
+	a7.setImageData(a7_array);
+
+	ActionCard a8;
+	a8.setInstruction("SWAP HAND WITH OPPONENT");
+	a8.setImageData(a8_array);
 
 	// Deck<ActionCard> da;
 	// da.AddCard(a1);
@@ -148,11 +165,16 @@ int main()
 
 	Deck<ActionCard> da;
 	da.AddCard(a1);
-	da.AddCard(a1_5);
 	da.AddCard(a2);
 	da.AddCard(a3);
 	da.AddCard(a4);
+	da.AddCard(a5);
+	da.AddCard(a6);
+	da.AddCard(a7);
+	da.AddCard(a8);
+
 	player->setActionDeck(&da);
+	opp->setActionDeck(&da);
 
 	Deck<PointCard> dp;
 	dp.AddCard(p1);
@@ -161,16 +183,54 @@ int main()
 	dp.AddCard(p4);
 	dp.AddCard(p5);
 	player->setPointDeck(&dp);
+	opp->setPointDeck(&dp);
 
-	player->play(std::move(a1));
-	player->play(std::move(a2));
-	//opp->play(std::move(a1_5));
-	for (auto x : player->getHand().getCards())
+	Hand example;
+	example.addCard(dp.Draw());
+	example.addCard(dp.Draw());
+	example.addCard(dp.Draw());
+	example.addCard(dp.Draw());
+	example.addCard(dp.Draw());
+	// the image data doesnt transfer over
+	
+	for(auto x : example.getCards())
 	{
 		x.Print();
 	}
-	std::cout << player->getScore() << "\n";
 
+	// player->play(std::move(a1)); // draw
+	// player->play(std::move(a5)); // draw
+	// for (auto x : player->getHand().getCards())
+	// {
+	// 	x.Print();
+	// }
+	// player->play(std::move(a3)); // reverse
+	// for (auto x : player->getHand().getCards())
+	// {
+	// 	x.Print();
+	// }
+
+	// player->play(std::move(a2)); // play
+	// std::cout << player->getScore() << "\n";
+
+	// opp->play(std::move(a5));
+	// std::cout << "player \n";
+	// for (auto x : player->getHand().getCards())
+	// {
+	// 	x.Print();
+	// }
+	// std::cout << "opp \n";
+	// for (auto x : opp->getHand().getCards())
+	// {
+	// 	x.Print();
+	// }
+
+	// player->play(std::move(a4)); // swap hands
+	// for (auto x : player->getHand().getCards())
+	// {
+	// 	x.Print();
+	// }
+	// std::cout << "opp \n";
 	// for (auto x : opp->getHand().getCards())
 	// {
 	// 	x.Print();
