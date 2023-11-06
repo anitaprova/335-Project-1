@@ -191,15 +191,14 @@ int main()
 	example.addCard(dp.Draw());
 	example.addCard(dp.Draw());
 	example.addCard(dp.Draw());
-	// the image data doesnt transfer over
-	
-	for(auto x : example.getCards())
-	{
-		x.Print();
-	}
+
+	// for(auto x : example.getCards())
+	// {
+	// 	x.Print();
+	// }
 
 	// player->play(std::move(a1)); // draw
-	// player->play(std::move(a5)); // draw
+	player->play(std::move(a5)); // draw
 	// for (auto x : player->getHand().getCards())
 	// {
 	// 	x.Print();

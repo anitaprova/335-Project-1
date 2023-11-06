@@ -47,13 +47,12 @@ void Player::play(ActionCard &&card)
 	std::string instruc = card.getInstruction();
 	std::cout << "PLAYING ACTION CARD: " << card.getInstruction() << "\n";
 
-	std::regex draw("^DRAW [0-9] CARD\\(S\\)");
-	std::regex play("^PLAY [0-9] CARD\\(S\\)");
+	std::regex draw("^DRAW \\d+ CARD\\(S\\)");
+	std::regex play("^PLAY \\d+ CARD\\(S\\)");
 
 	std::regex num("\\d+");
 	std::smatch match;
 	std::regex_search(card.getInstruction().begin(), card.getInstruction().end(), match, num);
-
 	if (std::regex_match(card.getInstruction(), draw))
 	{
 		for (int i = 0; i < std::stoi(match[0]); ++i)
@@ -63,7 +62,6 @@ void Player::play(ActionCard &&card)
 	}
 	else if (std::regex_match(card.getInstruction(), play))
 	{
-		int num = std::stoi(card.getInstruction().substr(4, 6));
 		for (int i = 0; i < std::stoi(match[0]); ++i)
 		{
 			playPointCard();
