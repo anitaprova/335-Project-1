@@ -2,8 +2,8 @@
 
 ActionCard::ActionCard()
 {
-	setInstruction("");
-	setDrawn(false);
+	this->setInstruction("");
+	this->setDrawn(false);
 	this->setImageData(nullptr);
 	this->setType(ACTION_CARD);
 }
@@ -12,8 +12,8 @@ bool ActionCard::isPlayable()
 {
 	if (this->getDrawn())
 	{
-		std::regex draw("^DRAW [0-9] CARD\\(S\\)");
-		std::regex play("^PLAY [0-9] CARD\\(S\\)");
+		std::regex draw("^DRAW \\d+ CARD\\(S\\)");
+		std::regex play("^PLAY \\d+ CARD\\(S\\)");
 		if (std::regex_match(this->getInstruction(), draw) || std::regex_match(this->getInstruction(), play) || this->getInstruction() == "REVERSE HAND" || this->getInstruction() == "SWAP HAND WITH OPPONENT")
 		{
 			return true;

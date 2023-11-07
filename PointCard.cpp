@@ -2,7 +2,7 @@
 
 PointCard::PointCard()
 {
-	std::string instruction_ = "0";
+	setInstruction("0");
 	setDrawn(false);
 	this->setImageData(nullptr);
 	this->setType(POINT_CARD);
@@ -10,7 +10,8 @@ PointCard::PointCard()
 
 bool PointCard::isPlayable()
 {
-	if (this->getDrawn() == 1 && std::stoi(this->getInstruction()) >= 0)
+	//this->getDrawn() == 1 && 
+	if (std::stoi(this->getInstruction()) >= 0)
 	{
 		return true;
 	}
@@ -29,11 +30,11 @@ void PointCard::Print() const
 	}
 	else
 	{
-		// for (int i = 0; i < 80; i++)
-		// {
-		// 	std::cout << this->getImageData()[i] << " ";
-		// }
-		// std::cout << "\n";
-		std::cout << this->getImageData() << "\n";
+		 for (int i = 0; i < 80; i++)
+		 {
+		 	std::cout << this->getImageData()[i] << " ";
+		 }
+		 std::cout << "\n";
+		//std::cout << this->getImageData() << "\n";
 	}
 }

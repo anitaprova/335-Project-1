@@ -25,10 +25,13 @@ CardType &&Deck<CardType>::Draw()
 {
 	if (!cards_.empty())
 	{
-		cards_.back().setDrawn(true);
-		CardType &&c = std::move(cards_.back());
+		CardType * card = new CardType;
+		*card = cards_.back();
+		card->setDrawn(true);
+		// CardType &&c = std::move(cards_.back());
 		cards_.pop_back();
-		return std::move(c);
+		
+		return std::move(*card);
 	}
 }
 

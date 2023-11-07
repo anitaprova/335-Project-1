@@ -11,25 +11,24 @@ Hand::~Hand()
 
 Hand::Hand(const Hand &other)
 {
-	cards_ = other.cards_;
+	// cards_ = other.cards_;
 
-	// for (int i = 0; i < other.cards_.size(); ++i)
-	// {
-	// 	cards_[i] = other.cards_[i];
-	// }
+	for (int i = 0; i < other.cards_.size(); ++i)
+	{
+		cards_[i] = other.cards_[i];
+	}
 }
 
 Hand &Hand::operator=(const Hand &other)
 {
 	if (this != &other)
 	{
-		cards_ = other.cards_;
+		//cards_ = other.cards_;
+		for (int i = 0; i < other.cards_.size(); ++i)
+		{
+			cards_[i] = other.cards_[i];
+		}
 	}
-
-	// for (int i = 0; i < other.cards_.size(); ++i)
-	// {
-	// 	cards_[i] = other.cards_[i];
-	// }
 	return *this;
 }
 
@@ -58,7 +57,6 @@ void Hand::addCard(PointCard &&card)
 {
 	card.setDrawn(true);
 	cards_.push_back(card);
-
 	//cards_.push_back(std::move(card));
 }
 
@@ -77,11 +75,26 @@ void Hand::Reverse()
 
 int Hand::PlayCard()
 {
-	if (!this->isEmpty() && cards_[0].isPlayable())
+	// if (this->isEmpty() || !(cards_.front().isPlayable()))
+  //   {
+  //       if (!(cards_.front().isPlayable()))
+  //           cards_.pop_front();
+  //       throw "Deck is empty";
+  //   }
+
+  //   int points = std::stoi(cards_.front().getInstruction());
+  //   cards_.pop_front();
+  //   return points;
+	
+	if (!this->isEmpty() && cards_.front().isPlayable())
 	{
-		int points = std::stoi(cards_[0].getInstruction());
+		int points = std::stoi(cards_.front().getInstruction());
 		cards_.pop_front();
 		return points;
+	}
+	else if(this->isEmpty())
+	{
+		return 0;
 	}
 	else
 	{

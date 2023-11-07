@@ -8,6 +8,7 @@
 
 int main()
 {
+	/*
 	int *p1_array = new int[80];
 	int *p2_array = new int[80];
 	int *p3_array = new int[80];
@@ -59,7 +60,7 @@ int main()
 	ActionCard a5;
 	a5.setInstruction("DRAW 1 CARD(S)");
 	a5.setImageData(a5_array);
-
+//
 	ActionCard a6;
 	a6.setInstruction("PLAY 1 CARD(S)");
 	a6.setImageData(a6_array);
@@ -72,32 +73,13 @@ int main()
 	a8.setInstruction("SWAP HAND WITH OPPONENT");
 	a8.setImageData(a8_array);
 
-	// Deck<ActionCard> da;
-	// da.AddCard(a1);
-	// da.AddCard(a2);
-	// da.AddCard(a3);
-	// da.AddCard(a4);
-	// ActionCard deck_card = da.Draw();
-	// std::cout << deck_card.getInstruction() << "\n";
-
-	// for (auto x : da.getDeck())
-	// {
-	// 	x.Print();
-	// }
-	// std::cout << "\n\nSHUFFLE INCOMING \n\n";
-	// da.Shuffle();
-	// for (auto x : da.getDeck())
-	// {
-	// 	x.Print();
-	// }
-	// std::cout << "\\\\\\\\\\\\\\\\\\\\\\\\ \n\n\n";
-
 	PointCard p; // empty
 
 	PointCard p1;
 	p1.setDrawn(true);
 	p1.setInstruction("5");
 	p1.setImageData(p1_array);
+ 	p1.Print();
 
 	PointCard p2;
 	p2.setDrawn(true);
@@ -119,20 +101,25 @@ int main()
 	p5.setInstruction("30");
 	p5.setImageData(p5_array);
 
-	// Hand h;
-	// h.addCard(std::move(p)); // empty constructor
-	// h.addCard(std::move(p1));
-	// h.addCard(std::move(p2));
-	// h.addCard(std::move(p3));
+	Hand h;
+	h.addCard(std::move(p)); // empty constructor
+	h.addCard(std::move(p1));
+	h.addCard(std::move(p2));
+	h.addCard(std::move(p3));
+
+	std::cout << "HAND\n";
+	for (auto &x : h.getCards())
+	{
+		x.Print();
+	}
 
 	// Deck<PointCard> dp;
-	// dp.AddCard(p1);
-	// dp.AddCard(p2);
-	// dp.AddCard(p3);
 	// dp.AddCard(p4);
 	// dp.AddCard(p5);
 
-	// h.addCard(dp.Draw());
+	// PointCard &&point = dp.Draw();
+	// std::cout << point.getImageData() << "\n";
+	// //h.addCard(dp.Draw());
 	// h.addCard(dp.Draw());
 
 	// for (auto &x : h.getCards())
@@ -164,7 +151,7 @@ int main()
 	opp->setOpponent(player);
 
 	Deck<ActionCard> da;
-	da.AddCard(a1);
+	//da.AddCard(a1);
 	da.AddCard(a2);
 	da.AddCard(a3);
 	da.AddCard(a4);
@@ -172,7 +159,6 @@ int main()
 	da.AddCard(a6);
 	da.AddCard(a7);
 	da.AddCard(a8);
-
 	player->setActionDeck(&da);
 	opp->setActionDeck(&da);
 
@@ -185,24 +171,36 @@ int main()
 	player->setPointDeck(&dp);
 	opp->setPointDeck(&dp);
 
-	Hand example;
-	example.addCard(dp.Draw());
-	example.addCard(dp.Draw());
-	example.addCard(dp.Draw());
-	example.addCard(dp.Draw());
-	example.addCard(dp.Draw());
+	std::cout << "\n\nDECK\n";
+	for(auto x : dp.getDeck())
+	{
+		x.Print();
+	}
+	std::cout << "\nPLAYER\n";
+	//player->play(std::move(a1)); // draw
+	//player->play(std::move(a5)); // draw
 
-	// for(auto x : example.getCards())
-	// {
-	// 	x.Print();
-	// }
+	for (auto x : player->getHand().getCards())
+	{
+		std::cout << "EH:LEAAWFA" << std::endl;
+		x.Print();
+	}
 
-	// player->play(std::move(a1)); // draw
-	player->play(std::move(a5)); // draw
-	// for (auto x : player->getHand().getCards())
-	// {
-	// 	x.Print();
-	// }
+
+	std::cout << "-----------------"
+
+	Player test = std::move(*)
+	test.setActionDeck(&da);
+	test.setPointDeck(&dp);
+
+	Hand hh;
+
+	test.setHand(hh);
+	test.drawPointCard(&dp);
+	test.getHand().getCards().front().Print();
+
+
+
 	// player->play(std::move(a3)); // reverse
 	// for (auto x : player->getHand().getCards())
 	// {
@@ -234,6 +232,36 @@ int main()
 	// {
 	// 	x.Print();
 	// }
+
+	*/
+
+	int* bitmap = new int[80];
+	for(int i = 0; i < 80; i++) {
+		bitmap[i] = i;
+	}	
+
+	PointCard pc0;
+	pc0.setInstruction("9");
+	pc0.setImageData(bitmap);
+	pc0.setDrawn(false);
+	pc0.Print();
+
+
+	Deck<PointCard> pDeck; 
+	pDeck.AddCard(pc0);
+	std::cout << "-------" << std::endl;
+	PointCard pc1 = pDeck.Draw();
+		std::cout << "-------" << std::endl;
+
+	
+	pc1.Print();
+
+	//Hand hand;
+	//hand.addCard(pDeck.Draw());
+	//std::deque<PointCard> que = hand.getCards();
+	//que.front().Print();
+
+
 
 	return 0;
 }

@@ -12,7 +12,6 @@ Player::Player()
 
 Player::~Player()
 {
-	delete opponent_;
 	opponent_ = nullptr;
 
 	delete actiondeck_;
@@ -44,7 +43,6 @@ void Player::setScore(const int &score)
 
 void Player::play(ActionCard &&card)
 {
-	std::string instruc = card.getInstruction();
 	std::cout << "PLAYING ACTION CARD: " << card.getInstruction() << "\n";
 
 	std::regex draw("^DRAW \\d+ CARD\\(S\\)");

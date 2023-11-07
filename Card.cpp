@@ -4,8 +4,8 @@ Card::Card()
 {
 	instruction_ = "";
 	drawn_ = false;
-	bitmap_ = new int[80];
-	// bitmap_ = nullptr;
+	// bitmap_ = new int[80];
+	bitmap_ = nullptr;
 }
 
 Card::~Card()
@@ -21,6 +21,7 @@ Card::~Card()
 
 Card::Card(const Card &rhs)
 {
+	std::cout << "CC" << std::endl;
 	cardType_ = rhs.cardType_;
 	instruction_ = rhs.instruction_;
 	drawn_ = rhs.drawn_;
@@ -41,40 +42,43 @@ Card::Card(const Card &rhs)
 
 Card &Card::operator=(const Card &rhs)
 {
+	std::cout << "CA" << std::endl;
 	if (this != &rhs)
 	{
 		cardType_ = rhs.cardType_;
 		instruction_ = rhs.instruction_;
 		drawn_ = rhs.drawn_;
 		//delete[] bitmap_;
-		bitmap_ = new int[80];
-		for (int i = 0; i < 80; ++i)
-		{
-			bitmap_[i] = rhs.bitmap_[i];
-		}
+		// bitmap_ = new int[80];
+		// for (int i = 0; i < 80; ++i)
+		// {
+		// 	bitmap_[i] = rhs.bitmap_[i];
+		// }
 
-		// if (rhs.bitmap_ != nullptr)
-		// {
-		// 	bitmap_ = new int[80];
-		// 	for (int i = 0; i < 80; ++i)
-		// 	{
-		// 		bitmap_[i] = rhs.bitmap_[i];
-		// 	}
-		// }
-		// else
-		// {
-		// 	bitmap_ = nullptr;
-		// }
+		if (rhs.bitmap_ != nullptr)
+		{
+			bitmap_ = new int[80];
+			for (int i = 0; i < 80; ++i)
+			{
+				bitmap_[i] = rhs.bitmap_[i];
+			}
+		}
+		else
+		{
+			bitmap_ = nullptr;
+		}
 	}
 	return *this;
 }
 
 Card::Card(Card &&rhs)
 {
+	std::cout << "MC" << std::endl;
 	cardType_ = std::move(rhs.cardType_);
 	drawn_ = std::move(rhs.drawn_);
 	instruction_ = std::move(rhs.instruction_);
 	bitmap_ = std::move(rhs.bitmap_);
+	rhs.bitmap_ = nullptr;
 
 	// cardType_ = rhs.cardType_;
 	// instruction_ = rhs.instruction_;
@@ -87,16 +91,14 @@ Card::Card(Card &&rhs)
 
 Card &Card::operator=(Card &&rhs)
 {
+	std::cout << "MA" << std::endl;
 	if (this != &rhs)
 	{
 		cardType_ = std::move(rhs.cardType_);
 		instruction_ = std::move(rhs.instruction_);
 		drawn_ = std::move(rhs.drawn_);
 		bitmap_ = std::move(rhs.bitmap_);
-		// for(int i = 0; i < 80; i++)
-		// {
-		// 	std::swap(bitmap_[i], rhs.bitmap_[i]);
-		// }
+		rhs.bitmap_ = nullptr;
 
 		// std::swap(cardType_, rhs.cardType_);
 		// std::swap(instruction_, rhs.instruction_);
