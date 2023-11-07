@@ -5,6 +5,7 @@ Name Anita Prova
 Date 10/27/23
 PointCard.hpp defines the PointCard class and inherits from the Card Class.
 */
+
 #ifndef POINTCARD_HPP
 #define POINTCARD_HPP
 

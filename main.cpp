@@ -60,7 +60,7 @@ int main()
 	ActionCard a5;
 	a5.setInstruction("DRAW 1 CARD(S)");
 	a5.setImageData(a5_array);
-//
+
 	ActionCard a6;
 	a6.setInstruction("PLAY 1 CARD(S)");
 	a6.setImageData(a6_array);
