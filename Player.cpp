@@ -16,6 +16,7 @@ Player::Player()
  */
 Player::~Player()
 {
+	delete opponent_;
 	opponent_ = nullptr;
 
 	delete actiondeck_;
@@ -74,7 +75,7 @@ void Player::play(ActionCard &&card)
 
 	std::regex num("\\d+");
 	std::smatch match;
-	std::regex_search(card.getInstruction().begin(), card.getInstruction().end(), match, num);
+	std::regex_search(card.getInstruction().begin(), card.getInstruction().end(), match, num); //searches for the number and stores it in match
 	if (std::regex_match(card.getInstruction(), draw))
 	{
 		for (int i = 0; i < std::stoi(match[0]); ++i)

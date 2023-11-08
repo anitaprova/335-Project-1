@@ -164,7 +164,7 @@ void Card::setImageData(int *data)
 	if (data != nullptr)
 	{
 		bitmap_ = new int[80];
-		for (int i = 0; i < 80; i++)
+		for (int i = 0; i < 80; ++i)
 		{
 			bitmap_[i] = data[i];
 		}

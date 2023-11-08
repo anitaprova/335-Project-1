@@ -98,7 +98,7 @@ bool Hand::isEmpty() const
  */
 void Hand::Reverse()
 {
-	for (int i = 0; i < cards_.size() / 2; i++)
+	for (int i = 0; i < cards_.size() / 2; ++i)
 	{
 		std::swap(cards_[i], cards_[cards_.size() - 1 - i]);
 	}
@@ -120,6 +120,11 @@ int Hand::PlayCard()
 	}
 	else if(this->isEmpty())
 	{
+		return 0;
+	}
+	else if (!cards_.front().isPlayable())
+	{
+		cards_.pop_front();
 		return 0;
 	}
 	else
