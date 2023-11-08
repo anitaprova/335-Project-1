@@ -100,7 +100,8 @@ Card &Card::operator=(Card &&rhs)
 		instruction_ = std::move(rhs.instruction_);
 		drawn_ = std::move(rhs.drawn_);
 		bitmap_ = std::move(rhs.bitmap_);
-		rhs.bitmap_ = nullptr;
+		rhs.bitmap_ = nullptr; 
+		// rhs.bitmap_ has be made equal to nullptr after we move its data to bitmap_ to prevent memory leak
 	}
 	return *this;
 }

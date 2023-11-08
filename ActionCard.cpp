@@ -1,7 +1,7 @@
 #include "ActionCard.hpp"
 
 /**
- * @post: Construct a new Action Card object
+ * @post: Constructs a new Action Card object and sets default parameters 
  */
 ActionCard::ActionCard()
 {
@@ -24,6 +24,7 @@ bool ActionCard::isPlayable()
 {
 	if (this->getDrawn())
 	{
+		// simple regex that works regardless of the number
 		std::regex draw("^DRAW \\d+ CARD\\(S\\)");
 		std::regex play("^PLAY \\d+ CARD\\(S\\)");
 		if (std::regex_match(this->getInstruction(), draw) || std::regex_match(this->getInstruction(), play) || this->getInstruction() == "REVERSE HAND" || this->getInstruction() == "SWAP HAND WITH OPPONENT")

@@ -17,7 +17,7 @@ PointCard::PointCard()
  */
 bool PointCard::isPlayable()
 {
-	if (std::stoi(this->getInstruction()) >= 0)
+	if (std::stoi(this->getInstruction()) >= 0 && this->getDrawn())
 	{
 		return true;
 	}
